@@ -1,13 +1,11 @@
 var app = angular.module('app', []);
-
+console.log('app is loading!');
 app.controller('MyCtrl', ['$scope', '$http', function ($scope, $http) {
-   $scope.myData = [];  
-   $http.get('http://apis.is/concerts').
-    success(function(data, status, headers, config) {
-     .then(function(result) {
-                $scope.myData = data;
-                $scope.imageSource = 'imageSource';
-             });
-    })
-
+	console.log('control ran!');
+    $scope.myData = [];  
+    $http.get('http://apis.is/concerts').
+    success(function(data, status, headers, config, results) {
+	    console.log('success!');
+	    $scope.myData = data.results;
+	});
 }]);
